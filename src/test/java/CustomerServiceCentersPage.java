@@ -30,28 +30,28 @@ public class CustomerServiceCentersPage {
     @DataProvider
     public Object[][] RegionCity() {
         return new Object[][]{
-                {"Вінницька обл", "Вінниця", "ВІННИЦЬКА ОБЛ, ВІННИЦЯ"},
-                {"Вінницька обл", "Гайсин", "ВІННИЦЬКА ОБЛ, ГАЙСИН"},
-                {"Вінницька обл", "Козятин", "ВІННИЦЬКА ОБЛ, КОЗЯТИН"},
+                {1, 1, "ВІННИЦЬКА ОБЛ, ВІННИЦЯ"},
+                {1, 2, "ВІННИЦЬКА ОБЛ, ГАЙСИН"},
+                {1, 3, "ВІННИЦЬКА ОБЛ, КОЗЯТИН"},
         };
     }
 
 
     @Test (dataProvider = "RegionCity")
-    public void verifyRegionAndCityAndAddress(String Region, String City, String RegionCity) throws InterruptedException {
+    public void verifyRegionAndCity(int Region, int City, String RegionCity) throws InterruptedException {
         CustomerServiceCentersObjectPage customerServiceCentersObjectPage = new CustomerServiceCentersObjectPage(webDriver);
         Assert.assertEquals(customerServiceCentersObjectPage.getCurrentTittle(), "Магазини lifecell",
                 "Current page is wrong");
 
-        sleep (3000);
+        sleep (2000);
 
         Select dropdownRegion = new Select(webDriver.findElement(By.xpath("//*[@id='id_region']")));
-        dropdownRegion.selectByVisibleText(Region);
+        dropdownRegion.selectByIndex(Region);
 
-        sleep (3000);
+        sleep (1000);
 
         Select dropdownCity = new Select(webDriver.findElement(By.xpath("//*[@id='id_town']")));
-        dropdownCity.selectByVisibleText(City);
+        dropdownCity.selectByIndex(City);
 
         Assert.assertEquals(customerServiceCentersObjectPage.getCurrentRegionCity(), RegionCity,
                 "Current Region and City are wrong");
