@@ -18,7 +18,6 @@ public class CustomerServiceCentersPage {
     @BeforeClass
     public void before() {
         webDriver = new FirefoxDriver();
-        webDriver.get("https://www.lifecell.ua/uk/tsentry-obslugovuvannya-abonentiv/");
     }
 
     @AfterClass
@@ -28,7 +27,7 @@ public class CustomerServiceCentersPage {
 
 
     @DataProvider
-    public Object[][] RegionCity() {
+    public Object[][] RegionCityUkr() {
         return new Object[][]{
                 {1, 1, "ВІННИЦЬКА ОБЛ, ВІННИЦЯ"},
                 {1, 2, "ВІННИЦЬКА ОБЛ, ГАЙСИН"},
@@ -36,14 +35,28 @@ public class CustomerServiceCentersPage {
         };
     }
 
+    @DataProvider
+    public Object[][] RegionCityRus() {
+        return new Object[][]{
+                {1, 1, "ВИННИЦКАЯ ОБЛ, ВИННИЦА"},
+                {1, 2, "ВИННИЦКАЯ ОБЛ, ГАЙСИН"},
+                {1, 3, "ВИННИЦКАЯ ОБЛ, КОЗЯТИН"},
+        };
+    }
 
-    @Test (dataProvider = "RegionCity")
-    public void verifyRegionAndCity(int Region, int City, String RegionCity) throws InterruptedException {
+
+    @Test (dataProvider = "RegionCityUkr")
+    public void verifyRegionAndCityUkr(int Region, int City, String RegionCity) throws InterruptedException {
+
+        webDriver.get("https://www.lifecell.ua/");
+        LifecellHomePage lifecellHomePage = new LifecellHomePage(webDriver);
+        lifecellHomePage.clickCustomerServiceButton();
+
         CustomerServiceCentersObjectPage customerServiceCentersObjectPage = new CustomerServiceCentersObjectPage(webDriver);
         Assert.assertEquals(customerServiceCentersObjectPage.getCurrentTittle(), "Магазини lifecell",
                 "Current page is wrong");
 
-        sleep (2000);
+        sleep (1000);
 
         Select dropdownRegion = new Select(webDriver.findElement(By.xpath("//*[@id='id_region']")));
         dropdownRegion.selectByIndex(Region);
@@ -55,7 +68,32 @@ public class CustomerServiceCentersPage {
 
         Assert.assertEquals(customerServiceCentersObjectPage.getCurrentRegionCity(), RegionCity,
                 "Current Region and City are wrong");
+    }
 
+
+    @Test (dataProvider = "RegionCityRus")
+    public void verifyRegionAndCityRus(int Region, int City, String RegionCity) throws InterruptedException {
+        webDriver.get("https://www.lifecell.ua/ru");
+
+        LifecellHomePage lifecellHomePage = new LifecellHomePage(webDriver);
+        lifecellHomePage.clickCustomerServiceButton();
+
+        CustomerServiceCentersObjectPage customerServiceCentersObjectPage = new CustomerServiceCentersObjectPage(webDriver);
+        Assert.assertEquals(customerServiceCentersObjectPage.getCurrentTittle(), "Магазины lifecell",
+                "Current page is wrong");
+
+        sleep (1000);
+
+        Select dropdownRegion = new Select(webDriver.findElement(By.xpath("//*[@id='id_region']")));
+        dropdownRegion.selectByIndex(Region);
+
+        sleep (1000);
+
+        Select dropdownCity = new Select(webDriver.findElement(By.xpath("//*[@id='id_town']")));
+        dropdownCity.selectByIndex(City);
+
+        Assert.assertEquals(customerServiceCentersObjectPage.getCurrentRegionCity(), RegionCity,
+                "Current Region and City are wrong");
     }
 
 }
