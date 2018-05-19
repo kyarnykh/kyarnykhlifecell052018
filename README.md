@@ -14,27 +14,6 @@ Environment setup steps:
 
 
 Add source code to GitHub:
- Example 1:
-     1. Create GitHub account
-     2. Create New Project (Project name is the same name project on the PC) with file ".gitignore"
-     3. Update new file .gitignore
-     4. Download Git client for Windows x64
-     5. Install Git client by default
-     6. Restart IntelliJ IDEA
-     7. Setting GitHub:
-        Click on "File" button > Settings > Version control > setup link to project on PC
-     8. Upload files and folders to GitHub on WEB via Drag and Drop
-     9. Sync PC Project with Web Project:
-        1. Click right on project folder
-        2. Click on GitHub
-        3. Commit repository
-        4. Click "Commit and Push" button
-        5. Click "push" button
-
-
-
-
- Example 2:
      1. Create new repository at the GIThub (Enter repository name)
      2. Copy link to repository
      3. Enable version control integration in IDE (VCS  => enable version control integration)
