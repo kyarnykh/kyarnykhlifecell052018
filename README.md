@@ -31,6 +31,9 @@ Add source code to GitHub:
         4. Click "Commit and Push" button
         5. Click "push" button
 
+
+
+
  Example 2:
      1. Create new repository at the GIThub (Enter repository name)
      2. Copy link to repository
