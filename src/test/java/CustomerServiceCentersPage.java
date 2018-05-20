@@ -58,7 +58,7 @@ public class CustomerServiceCentersPage {
     public void verifyRegionAndCityUkr(int Region, int City, String RegionCity) throws InterruptedException {
 
         webDriver.get("https://www.lifecell.ua/");
-        LifecellHomePage lifecellHomePage = new LifecellHomePage(webDriver);
+        LifecellHomeObjectPage lifecellHomePage = new LifecellHomeObjectPage(webDriver);
         lifecellHomePage.clickCustomerServiceButton();
 
         CustomerServiceCentersObjectPage customerServiceCentersObjectPage = new CustomerServiceCentersObjectPage(webDriver);
@@ -76,7 +76,7 @@ public class CustomerServiceCentersPage {
         dropdownCity.selectByIndex(City);
 
         Assert.assertEquals(customerServiceCentersObjectPage.getCurrentRegionCity(), RegionCity,
-                "Current Region and City are wrong");
+                "Current region and city are wrong");
     }
 
 
@@ -84,7 +84,7 @@ public class CustomerServiceCentersPage {
     public void verifyRegionAndCityRus(int Region, int City, String RegionCity) throws InterruptedException {
         webDriver.get("https://www.lifecell.ua/ru");
 
-        LifecellHomePage lifecellHomePage = new LifecellHomePage(webDriver);
+        LifecellHomeObjectPage lifecellHomePage = new LifecellHomeObjectPage(webDriver);
         lifecellHomePage.clickCustomerServiceButton();
 
         CustomerServiceCentersObjectPage customerServiceCentersObjectPage = new CustomerServiceCentersObjectPage(webDriver);
@@ -102,7 +102,7 @@ public class CustomerServiceCentersPage {
         dropdownCity.selectByIndex(City);
 
         Assert.assertEquals(customerServiceCentersObjectPage.getCurrentRegionCity(), RegionCity,
-                "Current Region and City are wrong");
+                "Current region and city are wrong");
     }
 
 
@@ -110,7 +110,7 @@ public class CustomerServiceCentersPage {
     public void verifyRegionAndCityEng(int Region, int City, String RegionCity) throws InterruptedException {
         webDriver.get("https://www.lifecell.ua/en/");
 
-        LifecellHomePage lifecellHomePage = new LifecellHomePage(webDriver);
+        LifecellHomeObjectPage lifecellHomePage = new LifecellHomeObjectPage(webDriver);
         lifecellHomePage.clickCustomerServiceButton();
 
         CustomerServiceCentersObjectPage customerServiceCentersObjectPage = new CustomerServiceCentersObjectPage(webDriver);
@@ -128,7 +128,7 @@ public class CustomerServiceCentersPage {
         dropdownCity.selectByIndex(City);
 
         Assert.assertEquals(customerServiceCentersObjectPage.getCurrentRegionCity(), RegionCity,
-                "Current Region and City are wrong");
+                "Current region and city are wrong");
     }
 
 }
