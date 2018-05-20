@@ -15,12 +15,12 @@ public class CustomerServiceCentersPage {
     public CustomerServiceCentersPage() {
     }
 
-    @BeforeClass
+    @BeforeMethod
     public void before() {
         webDriver = new FirefoxDriver();
     }
 
-    @AfterClass
+    @AfterMethod
     public void after() {
         webDriver.close();
     }
