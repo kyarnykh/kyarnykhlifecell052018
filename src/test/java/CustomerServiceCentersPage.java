@@ -1,6 +1,8 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -18,13 +20,13 @@ public class CustomerServiceCentersPage {
     @BeforeMethod
     public void before() {
         webDriver = new FirefoxDriver();
+        webDriver.get("https://www.lifecell.ua");
     }
 
     @AfterMethod
     public void after() {
         webDriver.close();
     }
-
 
     @DataProvider
     public Object[][] RegionCityUkr() {
@@ -82,9 +84,11 @@ public class CustomerServiceCentersPage {
 
     @Test (dataProvider = "RegionCityRus")
     public void verifyRegionAndCityRus(int Region, int City, String RegionCity) throws InterruptedException {
-        webDriver.get("https://www.lifecell.ua/ru");
-
         LifecellHomeObjectPage lifecellHomePage = new LifecellHomeObjectPage(webDriver);
+
+        lifecellHomePage.actions()
+
+
         lifecellHomePage.clickCustomerServiceButton();
 
         CustomerServiceCentersObjectPage customerServiceCentersObjectPage = new CustomerServiceCentersObjectPage(webDriver);

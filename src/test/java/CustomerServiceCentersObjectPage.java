@@ -7,8 +7,6 @@ public class CustomerServiceCentersObjectPage {
     WebDriver webDriver;
 
     private WebElement currentRegionCity;
-    private WebElement currentRegion;
-
 
 
     public CustomerServiceCentersObjectPage(WebDriver webDriver) {
@@ -18,7 +16,6 @@ public class CustomerServiceCentersObjectPage {
 
     private void initElements(WebDriver webDriver) {
         currentRegionCity = webDriver.findElement(By.xpath("//*[@class='current-region']"));
-        currentRegion = webDriver.findElement(By.xpath("//*[@id='id_region']"));
     }
 
     public String getCurrentTittle(){
@@ -27,10 +24,6 @@ public class CustomerServiceCentersObjectPage {
 
     public String getCurrentRegionCity(){
         return currentRegionCity.getText();
-    }
-
-    public String getCurrentRegion(){
-        return currentRegion.getAttribute("selected");
     }
 
 }
