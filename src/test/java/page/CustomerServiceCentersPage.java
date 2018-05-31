@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class LifecellCustomerServicePage {
+public class CustomerServiceCentersPage {
 
     WebDriver webDriver;
 
@@ -20,7 +20,7 @@ public class LifecellCustomerServicePage {
     private WebElement dropdownListCity;
 
 
-    public LifecellCustomerServicePage(WebDriver webDriver) {
+    public CustomerServiceCentersPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
     }

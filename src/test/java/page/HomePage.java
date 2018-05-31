@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LifecellHomePage {
+public class HomePage {
 
     WebDriver webDriver;
 
@@ -13,7 +13,7 @@ public class LifecellHomePage {
     private WebElement customerServiceButton;
 
 
-    public LifecellHomePage(WebDriver webDriver) {
+    public HomePage(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
     }
@@ -22,9 +22,9 @@ public class LifecellHomePage {
         return webDriver.getTitle();
     }
 
-    public LifecellCustomerServicePage clickCustomerServiceButton() {
+    public CustomerServiceCentersPage clickCustomerServiceButton() {
         customerServiceButton.click();
-        return new LifecellCustomerServicePage(webDriver);
+        return new CustomerServiceCentersPage(webDriver);
     }
 
 

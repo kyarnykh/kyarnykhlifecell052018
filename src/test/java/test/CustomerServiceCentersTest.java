@@ -2,10 +2,10 @@ package test;
 
 import org.testng.Assert;
 import org.testng.annotations.*;
-import page.LifecellCustomerServicePage;
+import page.CustomerServiceCentersPage;
 
 
-public class LifecellCustomerServiceTest extends LifecellBaseTest {
+public class CustomerServiceCentersTest extends BaseTest {
 
 
     @DataProvider
@@ -21,15 +21,15 @@ public class LifecellCustomerServiceTest extends LifecellBaseTest {
     @Test (dataProvider = "RegionCity")
     public void verifyRegionAndCity(int selectRegion, int selectCity, String matchRegionAndCity) {
 
-        LifecellCustomerServicePage lifecellCustomerServicePage = lifecellHomePage.clickCustomerServiceButton();
+        CustomerServiceCentersPage customerServiceCentersPage = lifecellHomePage.clickCustomerServiceButton();
 
-        Assert.assertEquals(lifecellCustomerServicePage.getCurrentTittle(), "Магазини lifecell",
+        Assert.assertEquals(customerServiceCentersPage.getCurrentTittle(), "Магазини lifecell",
                 "Current page is wrong");
 
-        lifecellCustomerServicePage.selectRegion(selectRegion);
-        lifecellCustomerServicePage.selectCity(selectCity);
+        customerServiceCentersPage.selectRegion(selectRegion);
+        customerServiceCentersPage.selectCity(selectCity);
 
-        Assert.assertEquals(lifecellCustomerServicePage.getCurrentRegionCity(), matchRegionAndCity,
+        Assert.assertEquals(customerServiceCentersPage.getCurrentRegionCity(), matchRegionAndCity,
                 "Current region and/or city are wrong");
     }
 
