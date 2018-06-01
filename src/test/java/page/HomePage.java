@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * ageObject of HomePage with methods and variables
+ * PageObject of HomePage with methods and variables
  */
 public class HomePage {
 
