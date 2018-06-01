@@ -9,9 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * PageObject of CustomerServiceCentersPage with methods and variables
  */
-public class CustomerServiceCentersPage {
-
-    WebDriver webDriver;
+public class CustomerServiceCentersPage extends BasePage {
 
     @FindBy(xpath = "//*[@class='current-region']")
     private WebElement currentRegionCity;
@@ -25,11 +23,11 @@ public class CustomerServiceCentersPage {
 
     /**
      * Constructor of CustomerServiceCentersPage class
-     * @param webDriver - current webDriver object
+     * @param webDriver - extends from BasePage
      * PageFactory - initialisation WebElements on THIS page and write their location of page in RAM
      */
     public CustomerServiceCentersPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+        super(webDriver);
         PageFactory.initElements(webDriver, this);
     }
 
@@ -49,6 +47,7 @@ public class CustomerServiceCentersPage {
      */
     public int selectRegion (int selectRegion){
         Select setRegion = new Select(dropdownListRegion);
+        waitUntilElementIsClickable(dropdownListRegion, 20);
         setRegion.selectByIndex(selectRegion);
         return (selectRegion);
     }
@@ -60,6 +59,7 @@ public class CustomerServiceCentersPage {
      */
     public int selectCity (int selectCity){
         Select setCity = new Select(dropdownListCity);
+        waitUntilElementIsClickable(dropdownListCity, 20);
         setCity.selectByIndex(selectCity);
         return (selectCity);
     }

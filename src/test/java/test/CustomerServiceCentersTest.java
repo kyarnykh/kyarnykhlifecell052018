@@ -4,8 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import page.CustomerServiceCentersPage;
 
-import static java.lang.Thread.sleep;
-
 
 /**
  * TestPage of CustomerServiceCentersTest with methods, variables and test data
@@ -35,7 +33,7 @@ public class CustomerServiceCentersTest extends BaseTest {
      * @throws InterruptedException sleep
      */
     @Test (dataProvider = "RegionCity")
-    public void verifyRegionAndCity(int selectRegion, int selectCity, String matchRegionAndCity) throws InterruptedException {
+    public void verifyRegionAndCity(int selectRegion, int selectCity, String matchRegionAndCity) {
         Assert.assertEquals(lifecellHomePage.getCurrentTittle(), "Мобільний зв'язок lifecell - lifecell Україна",
                 "Home page is wrong");
 
@@ -44,7 +42,6 @@ public class CustomerServiceCentersTest extends BaseTest {
                 "Customer service centers page is wrong");
 
         customerServiceCentersPage.selectRegion(selectRegion);
-        sleep (2000);
         customerServiceCentersPage.selectCity(selectCity);
 
         Assert.assertEquals(customerServiceCentersPage.getCurrentRegionCity(), matchRegionAndCity,
