@@ -30,21 +30,20 @@ public class CustomerServiceCentersTest extends BaseTest {
      * @param selectRegion - Region number in dropdown list
      * @param selectCity - City number in dropdown list
      * @param matchRegionAndCity - text for checking selected Region and City with expected
-     * @throws InterruptedException sleep
      */
     @Test (dataProvider = "RegionCity")
-    public void verifyRegionAndCity(int selectRegion, int selectCity, String matchRegionAndCity) {
-        Assert.assertEquals(lifecellHomePage.getCurrentTittle(), "Мобільний зв'язок lifecell - lifecell Україна",
+    public void verifyRegionAndCityForm(int selectRegion, int selectCity, String matchRegionAndCity) {
+        Assert.assertEquals(homePage.getCurrentTittle(), "Мобільний зв'язок lifecell - lifecell Україна",
                 "Home page is wrong");
 
-        CustomerServiceCentersPage customerServiceCentersPage = lifecellHomePage.clickCustomerServiceButton();
+        CustomerServiceCentersPage customerServiceCentersPage = homePage.clickCustomerServiceCentrsButton();
         Assert.assertEquals(customerServiceCentersPage.getCurrentTittle(), "Магазини lifecell",
                 "Customer service centers page is wrong");
 
         customerServiceCentersPage.selectRegion(selectRegion);
         customerServiceCentersPage.selectCity(selectCity);
 
-        Assert.assertEquals(customerServiceCentersPage.getCurrentRegionCity(), matchRegionAndCity,
+        Assert.assertEquals(customerServiceCentersPage.getCurrentRegionAndCity(), matchRegionAndCity,
                 "Current region and/or city are wrong");
     }
 

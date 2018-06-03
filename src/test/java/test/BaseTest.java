@@ -12,7 +12,7 @@ import page.HomePage;
 public abstract class BaseTest {
 
     public WebDriver webDriver;
-    HomePage lifecellHomePage;
+    HomePage homePage;
 
 
     /**
@@ -26,7 +26,7 @@ public abstract class BaseTest {
     public void before() {
         webDriver = new FirefoxDriver();
         webDriver.get("https://www.lifecell.ua");
-        lifecellHomePage = new HomePage(webDriver);
+        homePage = new HomePage(webDriver);
     }
 
     /**

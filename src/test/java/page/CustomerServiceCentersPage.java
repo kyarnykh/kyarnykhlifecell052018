@@ -68,7 +68,7 @@ public class CustomerServiceCentersPage extends BasePage {
      * Method for return selected Region and City
      * @return text
      */
-    public String getCurrentRegionCity(){
+    public String getCurrentRegionAndCity(){
         return currentRegionCity.getText();
     }
 

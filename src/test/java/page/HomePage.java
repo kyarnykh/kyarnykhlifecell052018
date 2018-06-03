@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage extends BasePage {
 
     @FindBy(xpath = "//div[3]/ul/li[5]")
-    private WebElement customerServiceButton;
+    private WebElement customerServiceCenterButton;
 
 
     /**
@@ -36,8 +36,8 @@ public class HomePage extends BasePage {
      * Method for click on the button
      * @return next new Page
      */
-    public CustomerServiceCentersPage clickCustomerServiceButton() {
-        customerServiceButton.click();
+    public CustomerServiceCentersPage clickCustomerServiceCentrsButton() {
+        customerServiceCenterButton.click();
         return new CustomerServiceCentersPage(webDriver);
     }
 
