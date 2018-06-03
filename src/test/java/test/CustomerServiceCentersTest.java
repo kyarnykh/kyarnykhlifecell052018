@@ -36,7 +36,7 @@ public class CustomerServiceCentersTest extends BaseTest {
         Assert.assertEquals(homePage.getCurrentTittle(), "Мобільний зв'язок lifecell - lifecell Україна",
                 "Home page is wrong");
 
-        CustomerServiceCentersPage customerServiceCentersPage = homePage.clickCustomerServiceCentrsButton();
+        CustomerServiceCentersPage customerServiceCentersPage = homePage.clickCustomerServiceCentersButton();
         Assert.assertEquals(customerServiceCentersPage.getCurrentTittle(), "Магазини lifecell",
                 "Customer service centers page is wrong");
 

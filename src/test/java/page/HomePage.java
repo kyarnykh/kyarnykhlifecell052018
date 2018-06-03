@@ -11,7 +11,17 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage extends BasePage {
 
     @FindBy(xpath = "//div[3]/ul/li[5]")
-    private WebElement customerServiceCenterButton;
+    private WebElement customerServiceCentersButton;
+
+    @FindBy(xpath = "//*[@type='button']")
+    private WebElement searchButton;
+
+    @FindBy(xpath = "//*[@type='text']")
+    private WebElement searchField;
+
+    @FindBy(xpath = "//*[@id='search_form']")
+    private WebElement searchForm;
+
 
 
     /**
@@ -36,9 +46,22 @@ public class HomePage extends BasePage {
      * Method for click on the button
      * @return next new Page
      */
-    public CustomerServiceCentersPage clickCustomerServiceCentrsButton() {
-        customerServiceCenterButton.click();
+    public CustomerServiceCentersPage clickCustomerServiceCentersButton() {
+        customerServiceCentersButton.click();
         return new CustomerServiceCentersPage(webDriver);
+    }
+
+    /**
+     * Method for search some information by users
+     * @param searchTerm - text for searching
+     * @return - next new Page
+     */
+    public SearchPage search (String searchTerm){
+        searchButton.click();
+        waitUntilElementIsClickable(searchButton, 10);
+        searchField.sendKeys(searchTerm);
+        searchForm.submit();
+        return new SearchPage(webDriver);
     }
 
 
