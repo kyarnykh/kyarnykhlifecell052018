@@ -33,9 +33,6 @@ public class CustomerServiceCentersTest extends BaseTest {
      */
     @Test (dataProvider = "RegionCity")
     public void verifyRegionAndCityForm(int selectRegion, int selectCity, String matchRegionAndCity) {
-        Assert.assertEquals(homePage.getCurrentTittle(), "Мобільний зв'язок lifecell - lifecell Україна",
-                "Home page is wrong");
-
         CustomerServiceCentersPage customerServiceCentersPage = homePage.clickCustomerServiceCentersButton();
         Assert.assertEquals(customerServiceCentersPage.getCurrentTittle(), "Магазини lifecell",
                 "Customer service centers page is wrong");

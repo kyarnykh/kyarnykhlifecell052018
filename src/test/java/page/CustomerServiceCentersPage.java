@@ -47,7 +47,6 @@ public class CustomerServiceCentersPage extends BasePage {
      */
     public int selectRegion (int selectRegion){
         Select setRegion = new Select(dropdownListRegion);
-        waitUntilElementIsClickable(dropdownListRegion, 20);
         setRegion.selectByIndex(selectRegion);
         return (selectRegion);
     }
@@ -59,7 +58,6 @@ public class CustomerServiceCentersPage extends BasePage {
      */
     public int selectCity (int selectCity){
         Select setCity = new Select(dropdownListCity);
-        waitUntilElementIsClickable(dropdownListCity, 20);
         setCity.selectByIndex(selectCity);
         return (selectCity);
     }

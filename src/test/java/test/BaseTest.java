@@ -2,9 +2,12 @@ package test;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import page.HomePage;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * TestPage of BaseTest with main methods
@@ -25,8 +28,12 @@ public abstract class BaseTest {
     @BeforeMethod
     public void before() {
         webDriver = new FirefoxDriver();
+        webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        webDriver.manage().window().maximize();
         webDriver.get("https://www.lifecell.ua");
         homePage = new HomePage(webDriver);
+        Assert.assertEquals(homePage.getCurrentTittle(), "Мобільний зв'язок lifecell - lifecell Україна",
+                "Home page is wrong");
     }
 
     /**

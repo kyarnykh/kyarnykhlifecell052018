@@ -13,35 +13,30 @@ public class SearchTest extends BaseTest {
     public SearchTest() {
     }
 
+    /**
+     * Test data for search field
+     * @return search term
+     */
     @DataProvider
     public Object[][] DataSearch() {
         return new Object[][]{
                 {"lifecell"},
+                {"bip"},
+                {"phone"},
+                {"press"},
         };
     }
 
-
+    /**
+     * Method for verify basic search form
+     * @param searchTerm - search term
+     */
     @Test(dataProvider = "DataSearch")
     public void basicSearchTest(String searchTerm) {
-        Assert.assertEquals(homePage.getCurrentTittle(), "Мобільний зв'язок lifecell - lifecell Україна",
-                "Home page is wrong");
-
         SearchPage searchPage = homePage.search(searchTerm);
-        Assert.assertTrue(searchPage.isPageLoaded(),
-                "Search page is missing");
+        Assert.assertTrue(searchPage.isPageLoaded(), "Search page is missing");
 
-
-
-//        Assert.assertTrue(searchMenu.isDisplayed);
-
-
-
-
+        Assert.assertTrue(searchPage.searchMenuAreDisplayed());
     }
-
-
-
-
-
 
 }

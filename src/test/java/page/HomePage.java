@@ -58,11 +58,11 @@ public class HomePage extends BasePage {
      */
     public SearchPage search (String searchTerm){
         searchButton.click();
-        waitUntilElementIsClickable(searchButton, 10);
         searchField.sendKeys(searchTerm);
         searchForm.submit();
         return new SearchPage(webDriver);
     }
+
 
 
 }
