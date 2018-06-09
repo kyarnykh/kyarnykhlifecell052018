@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 /**
@@ -68,20 +70,62 @@ public class SearchPage extends BasePage{
 
     /**
      * Verify all elements of menu are displayed
-     * @return true if one element of all is displayed
+     * @return true if element of menu is displayed
      */
-    public boolean searchMenuAreDisplayed() {
-        menuAll.isDisplayed();
-        menuAboutCompany.isDisplayed();
-        menuAnnouncements.isDisplayed();
-        menuDevices.isDisplayed();
-        menuGuannouncements.isDisplayed();
-        menuInternetPackages.isDisplayed();
-        menuOffers.isDisplayed();
-        menuQuestions.isDisplayed();
-        menuService.isDisplayed();
-        menuTariffs.isDisplayed();
-        menuVacancy.isDisplayed();
-        return true;
+    public String getNameOfAll() {
+        waitUntilElementIsClickable(menuAll, 10);
+        return menuAll.getText();
     }
+
+    public String getNameOfAboutCompany() {
+        waitUntilElementIsClickable(menuAboutCompany, 10);
+        return menuAboutCompany.getText();
+    }
+
+    public String getNameOfAnnouncements() {
+        waitUntilElementIsClickable(menuAnnouncements, 10);
+        return menuAnnouncements.getText();
+    }
+
+    public String getNameOfDevices() {
+        waitUntilElementIsClickable(menuDevices, 10);
+        return menuDevices.getText();
+    }
+
+    public String getNameOfGuannouncements() {
+        waitUntilElementIsClickable(menuGuannouncements, 10);
+        return menuGuannouncements.getText();
+    }
+
+    public String getNameOfInternetPackages() {
+        waitUntilElementIsClickable(menuInternetPackages, 10);
+        return menuInternetPackages.getText();
+    }
+
+    public String getNameOfOffers() {
+        waitUntilElementIsClickable(menuOffers, 10);
+        return menuOffers.getText();
+    }
+
+    public String getNameOfQuestions() {
+        waitUntilElementIsClickable(menuQuestions, 10);
+        return menuQuestions.getText();
+    }
+
+    public String getNameOfService() {
+        waitUntilElementIsClickable(menuService, 10);
+        return menuService.getText();
+    }
+
+    public String getNameOfTariffs() {
+        waitUntilElementIsClickable(menuTariffs, 10);
+        return menuTariffs.getText();
+    }
+
+    public String getNameOfVacancy() {
+        waitUntilElementIsClickable(menuVacancy, 10);
+        return menuVacancy.getText();
+    }
+
+
 }
