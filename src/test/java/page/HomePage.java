@@ -22,10 +22,13 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//*[@id='search_form']")
     private WebElement searchForm;
 
+    @FindBy(xpath = "//a[@href='/uk/pristroyi/']")
+    private WebElement shopButton;
+
 
 
     /**
-     * Constructor of HomePage class
+     * Constructor of BasePage class
      * @param webDriver - extends from BasePage
      * PageFactory - initialisation WebElements on THIS page and write their location of page in RAM
      */
@@ -63,6 +66,13 @@ public class HomePage extends BasePage {
         return new SearchPage(webDriver);
     }
 
-
-
+    /**
+     * Click on the shop buttone
+     * @param webDriver - current webDriver
+     * @return next new Page
+     */
+    public ShopPage clickOnShopButton(WebDriver webDriver) {
+        shopButton.click();
+        return new ShopPage(webDriver);
+    }
 }

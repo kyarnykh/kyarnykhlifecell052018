@@ -22,7 +22,7 @@ public class CustomerServiceCentersPage extends BasePage {
 
 
     /**
-     * Constructor of CustomerServiceCentersPage class
+     * Constructor of BasePage class
      * @param webDriver - extends from BasePage
      * PageFactory - initialisation WebElements on THIS page and write their location of page in RAM
      */

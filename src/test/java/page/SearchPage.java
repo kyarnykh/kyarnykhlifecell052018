@@ -52,7 +52,7 @@ public class SearchPage extends BasePage{
 
 
     /**
-     * Constructor of LinkedinHomePage class
+     * Constructor of BasePage class
      * @param webDriver - current webDriver object
      * PageFactory - initialisation WebElements on THIS page and write their location of page in RAM
      */

@@ -31,7 +31,7 @@ public class SearchTest extends BaseTest {
     @Test(dataProvider = "DataSearch")
     public void basicSearchTest(String searchTerm) {
         SearchPage searchPage = homePage.search(searchTerm);
-        Assert.assertTrue(searchPage.isPageLoaded(), "Search page is missing");
+        Assert.assertTrue(searchPage.isPageLoaded(), "Search page is not loaded");
 
         Assert.assertEquals(searchPage.getNameOfAll(),"ВСІ", "Menu item 'All' is not displayed");
         Assert.assertEquals(searchPage.getNameOfTariffs(),"ТАРИФИ", "Menu item 'Tariffs' is not displayed");

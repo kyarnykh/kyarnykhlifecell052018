@@ -6,14 +6,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
     /**
-     * PageObject of LinkedinBasePage with the main methods
+     * PageObject of BasePage with the main methods
      */
     public abstract class BasePage {
         protected WebDriver webDriver;
 
 
         /**
-         * Constructor of LinkedinBasePage class
+         * Constructor of BasePage class
          * @param webDriver - current webDriver object
          */
         public BasePage(WebDriver webDriver) {
