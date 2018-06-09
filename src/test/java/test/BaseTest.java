@@ -28,7 +28,7 @@ public abstract class BaseTest {
     @BeforeMethod
     public void before() {
         webDriver = new FirefoxDriver();
-        webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         webDriver.manage().window().maximize();
         webDriver.get("https://www.lifecell.ua");
         homePage = new HomePage(webDriver);

@@ -45,7 +45,6 @@ public class SearchTest extends BaseTest {
         Assert.assertEquals(searchPage.getNameOfQuestions(),"ЗАПИТАННЯ", "Menu item 'Questions' is not displayed");
         Assert.assertEquals(searchPage.getNameOfVacancy(),"ВАКАНСІЇ", "Menu item 'Vacancy' is not displayed");
         Assert.assertEquals(searchPage.getNameOfAboutCompany(),"ПРО КОМПАНІЮ", "Menu item 'About Company' is not displayed");
-
     }
 
 }

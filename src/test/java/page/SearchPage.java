@@ -1,11 +1,10 @@
 package page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 /**
@@ -15,6 +14,9 @@ public class SearchPage extends BasePage{
 
     @FindBy(xpath = "//*[@class='form-element']")
     private WebElement searchForm;
+
+    @FindBy(xpath = "//*[@class='search-result-group tabs']")
+    private WebElement searchMenu;
 
     @FindBy(xpath = "//*[@category='all']")
     private WebElement menuAll;
@@ -73,57 +75,57 @@ public class SearchPage extends BasePage{
      * @return true if element of menu is displayed
      */
     public String getNameOfAll() {
-        waitUntilElementIsClickable(menuAll, 10);
+        waitUntilElementIsClickable(menuAll, 5);
         return menuAll.getText();
     }
 
     public String getNameOfAboutCompany() {
-        waitUntilElementIsClickable(menuAboutCompany, 10);
+        waitUntilElementIsClickable(menuAboutCompany, 5);
         return menuAboutCompany.getText();
     }
 
     public String getNameOfAnnouncements() {
-        waitUntilElementIsClickable(menuAnnouncements, 10);
+        waitUntilElementIsClickable(menuAnnouncements, 5);
         return menuAnnouncements.getText();
     }
 
     public String getNameOfDevices() {
-        waitUntilElementIsClickable(menuDevices, 10);
+        waitUntilElementIsClickable(menuDevices, 5);
         return menuDevices.getText();
     }
 
     public String getNameOfGuannouncements() {
-        waitUntilElementIsClickable(menuGuannouncements, 10);
+        waitUntilElementIsClickable(menuGuannouncements, 5);
         return menuGuannouncements.getText();
     }
 
     public String getNameOfInternetPackages() {
-        waitUntilElementIsClickable(menuInternetPackages, 10);
+        waitUntilElementIsClickable(menuInternetPackages, 5);
         return menuInternetPackages.getText();
     }
 
     public String getNameOfOffers() {
-        waitUntilElementIsClickable(menuOffers, 10);
+        waitUntilElementIsClickable(menuOffers, 5);
         return menuOffers.getText();
     }
 
     public String getNameOfQuestions() {
-        waitUntilElementIsClickable(menuQuestions, 10);
+        waitUntilElementIsClickable(menuQuestions, 5);
         return menuQuestions.getText();
     }
 
     public String getNameOfService() {
-        waitUntilElementIsClickable(menuService, 10);
+        waitUntilElementIsClickable(menuService, 5);
         return menuService.getText();
     }
 
     public String getNameOfTariffs() {
-        waitUntilElementIsClickable(menuTariffs, 10);
+        waitUntilElementIsClickable(menuTariffs, 5);
         return menuTariffs.getText();
     }
 
     public String getNameOfVacancy() {
-        waitUntilElementIsClickable(menuVacancy, 10);
+        waitUntilElementIsClickable(menuVacancy, 5);
         return menuVacancy.getText();
     }
 
