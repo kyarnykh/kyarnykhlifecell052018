@@ -21,7 +21,6 @@ public class SearchTest extends BaseTest {
     public Object[][] DataSearch() {
         return new Object[][]{
                 {"lifecell"},
-                {"phone"},
         };
     }
 
