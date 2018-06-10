@@ -1,4 +1,4 @@
-Project: lifecell = Automation Quality Assurance
+Project: lifecellua = Automation Quality Assurance
 by Kostiantyn Yarnykh
 Start date: 11.05.2018
 
