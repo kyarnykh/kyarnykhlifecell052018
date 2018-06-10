@@ -121,5 +121,4 @@ public class DevicePage extends BasePage {
         return new PayPage (webDriver);
     }
 
-
 }
