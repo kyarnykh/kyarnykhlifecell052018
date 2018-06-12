@@ -2,6 +2,7 @@ package page;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -25,10 +26,16 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@href='/uk/pristroyi/']")
     private WebElement shopButton;
 
+    @FindBy(xpath = "//div[3]/div[2]/div/div[1]/ul/li[1]")
+    private WebElement mainMenu;
+
+    @FindBy(xpath = "//a[.='Тарифні плани']")
+    private WebElement tariffsPlanButton;
+
 
 
     /**
-     * Constructor of BasePage class
+     * Constructor of HomePage class
      * @param webDriver - extends from BasePage
      * PageFactory - initialisation WebElements on THIS page and write their location of page in RAM
      */
@@ -74,5 +81,12 @@ public class HomePage extends BasePage {
     public ShopPage clickOnShopButton(WebDriver webDriver) {
         shopButton.click();
         return new ShopPage(webDriver);
+    }
+
+    public TariffsPlanPage clickOnTariffsPlanButton(WebDriver webDriver) {
+        new Actions(webDriver).moveToElement(mainMenu).perform();
+        waitUntilElementIsClickable(tariffsPlanButton, 5);
+        tariffsPlanButton.click();
+        return new TariffsPlanPage(webDriver);
     }
 }

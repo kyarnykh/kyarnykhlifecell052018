@@ -41,9 +41,9 @@ public abstract class BaseTest {
      * Start after each method by Test Classes
      * Close WebDriver
      */
-    @AfterMethod
-    public void after() {
-        webDriver.close();
-    }
+//    @AfterMethod
+//    public void after() {
+//        webDriver.close();
+//    }
 
 }

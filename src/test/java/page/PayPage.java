@@ -15,7 +15,7 @@ public class PayPage extends BasePage{
 
 
     /**
-     * Constructor of BasePage class
+     * Constructor of PayPage class
      * @param webDriver - current webDriver object
      * PageFactory - initialisation WebElements on THIS page and write their location of page in RAM
      */

@@ -15,7 +15,7 @@ public class ShopPage extends BasePage{
 
 
     /**
-     * Constructor of BasePage class
+     * Constructor of ShopPage class
      * @param webDriver - current webDriver object
      * PageFactory - initialisation WebElements on THIS page and write their location of page in RAM
      */

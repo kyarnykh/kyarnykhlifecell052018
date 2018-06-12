@@ -56,7 +56,7 @@ public class DevicePage extends BasePage {
 
 
     /**
-     * Constructor of BasePage class
+     * Constructor of DevicePage class
      * @param webDriver - current webDriver object
      * PageFactory - initialisation WebElements on THIS page and write their location of page in RAM
      */
