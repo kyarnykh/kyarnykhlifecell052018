@@ -15,7 +15,7 @@ public class OrderLegoTariffTest extends BaseTest {
     /**
      * Test data for choose Lego bundles and check discount and monthly prices
      * @return:
-     * Minutes=
+     * Minutes:
        -50 = 0 min,
        -25 = 50 min,
         0 = 100 min,
@@ -39,12 +39,12 @@ public class OrderLegoTariffTest extends BaseTest {
     @DataProvider
     public Object[][] DataOrderLegoTariff() {
         return new Object[][]{
-                {-50, -25, -25, 0, "20 грн", "43 грн"},
-//                {-25, 0, 0, 1, "45 грн", "70 грн"},
-//                {0, 25, 50, 0, "35 грн", "95 грн"},
-//                {25, 50, -50, 1, "45 грн", "140 грн"},
-//                {50, -50, -25, 0, "20 грн", "103 грн"},
-//                {-50, -25, 0, 1, "30 грн", "50 грн"},
+                {-50, -25, -25, 0, "20 грн", "43"},
+                {-25, 0, 0, 1, "45 грн", "70"},
+                {0, 25, 50, 0, "35 грн", "95"},
+                {25, 50, -50, 1, "45 грн", "140"},
+                {50, -50, -25, 0, "20 грн", "103"},
+                {-50, -25, 0, 1, "30 грн", "50"},
         };
     }
 
@@ -53,7 +53,7 @@ public class OrderLegoTariffTest extends BaseTest {
      * @param
      */
     @Test(dataProvider = "DataOrderLegoTariff")
-    public void verifyMonthlyFeeWithUnlimOnnet(int minOffnet, int gb, int sms, int onOff, String priceDiscount, String priceMonthlyFee) {
+    public void verifyMonthlyFeeWithUnlimOnnet(int minOffnet, int gb, int sms, int onOff, String priceDiscount, String priceMonthlyFee) throws InterruptedException {
         TariffsPlanPage TariffsPlanPage = homePage.clickOnTariffsPlanButton(webDriver);
         Assert.assertEquals(TariffsPlanPage.getCurrentTitle(), "4G LTE мобільний інтернет. lifecell - lifecell Україна",
                 "Tariffs plan page is not loaded");
