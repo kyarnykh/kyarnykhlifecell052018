@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import page.LegoTariffPage;
 import page.TariffsPlanPage;
 
+import static java.lang.Thread.sleep;
+
 
 public class OrderLegoTariffTest extends BaseTest {
 
@@ -65,6 +67,8 @@ public class OrderLegoTariffTest extends BaseTest {
         legoTariffPage.chooseData(gb);
         legoTariffPage.chooseSMS(sms);
         legoTariffPage.switchSocialNetworks(onOff);
+
+        sleep(3000);
 
         Assert.assertEquals(legoTariffPage.matchDiscountPrice(), priceDiscount,
                 "Discount price is incorrect");

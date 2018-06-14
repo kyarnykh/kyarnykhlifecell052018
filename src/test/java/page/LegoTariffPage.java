@@ -7,7 +7,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static java.lang.Thread.sleep;
 
 public class LegoTariffPage extends BasePage{
 
@@ -78,8 +77,7 @@ public class LegoTariffPage extends BasePage{
         }
     }
 
-    public String matchDiscountPrice() throws InterruptedException {
-        sleep (2000);
+    public String matchDiscountPrice() {
         return getDiscountPrice.getText();
     }
 
