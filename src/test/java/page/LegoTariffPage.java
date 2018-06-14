@@ -15,6 +15,22 @@ public class LegoTariffPage extends BasePage{
     @FindBy(xpath = "//*[@group='OFFNET']")
     private WebElement sliderOffnet;
 
+    @FindBy(xpath = "//*[@group='DATA']")
+    private WebElement sliderGb;
+
+    @FindBy(xpath = "//*[@group='SMS']")
+    private WebElement sliderSms;
+
+    @FindBy(xpath = "//*[@group='VK']")
+    private WebElement selectorForSocialNetworks;
+
+    @FindBy(xpath = "//*[@class='js-discount']")
+    private WebElement getDiscountPrice;
+
+    @FindBy(xpath = "//*[@class='js-total']")
+    private WebElement getMonthlyFee;
+
+
 
     /**
      * Constructor of LegoTariffPage class
@@ -30,14 +46,41 @@ public class LegoTariffPage extends BasePage{
         return true;
     }
 
-    public void chooseOffnet() {
+    public void chooseOffnet(int minOffnet) {
         ((JavascriptExecutor)webDriver).executeScript("arguments[0].scrollIntoView();", sliderOffnet);
         int width = sliderOffnet.getSize().getWidth();
-        System.out.println(width);
         Actions move = new Actions(webDriver);
-        move.moveToElement(sliderOffnet, ((width*2)/10), 0).click();
+        move.moveToElement(sliderOffnet, ((width*minOffnet)/100), 0).click();
         move.build().perform();
     }
 
+    public void chooseData(int gb) {
+        int width = sliderGb.getSize().getWidth();
+        Actions move = new Actions(webDriver);
+        move.moveToElement(sliderGb, ((width*gb)/100), 0).click();
+        move.build().perform();
+    }
 
+    public void chooseSMS(int sms) {
+        int width = sliderSms.getSize().getWidth();
+        Actions move = new Actions(webDriver);
+        move.moveToElement(sliderSms, ((width*sms)/100), 0).click();
+        move.build().perform();
+    }
+
+    public void switchSocialNetworks(int onOff) {
+        if (onOff == 1) {
+            selectorForSocialNetworks.click();
+        } else {
+            return;
+        }
+    }
+
+    public String matchDiscountPrice() {
+        return getDiscountPrice.getText();
+    }
+
+    public String matchMonthlyFeePrice() {
+        return getMonthlyFee.getText();
+    }
 }
