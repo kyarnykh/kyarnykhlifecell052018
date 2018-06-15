@@ -32,7 +32,7 @@ public class OrderLegoTariffTest extends BaseTest {
      * SMS:
        -50 = 0 SMS,
        -25 = 50 SMS,
-        0 = 100 SMS,
+        25 = 100 SMS,
         50 = 250 SMS.
      * Social Networks:
         0 = OFF,
@@ -42,11 +42,11 @@ public class OrderLegoTariffTest extends BaseTest {
     public Object[][] DataOrderLegoTariff() {
         return new Object[][]{
                 {-50, -25, -25, 0, "20 грн", "43"},
-                {-25, 0, 0, 1, "45 грн", "70"},
+                {-25, 0, 25, 1, "45 грн", "70"},
                 {0, 25, 50, 0, "35 грн", "95"},
                 {25, 50, -50, 1, "45 грн", "140"},
                 {50, -50, -25, 0, "20 грн", "103"},
-                {-50, -25, 0, 1, "30 грн", "50"},
+                {-50, -25, 25, 1, "30 грн", "50"},
         };
     }
 
@@ -68,7 +68,7 @@ public class OrderLegoTariffTest extends BaseTest {
         legoTariffPage.chooseSMS(sms);
         legoTariffPage.switchSocialNetworks(onOff);
 
-        sleep(3000);
+        sleep(2000);
 
         Assert.assertEquals(legoTariffPage.matchDiscountPrice(), priceDiscount,
                 "Discount price is incorrect");
