@@ -33,6 +33,5 @@ public abstract class BasePage {
         return webElement;
     }
 
-
 }
 

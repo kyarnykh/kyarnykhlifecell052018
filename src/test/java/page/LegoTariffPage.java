@@ -34,6 +34,13 @@ public class LegoTariffPage extends BasePage{
     @FindBy(xpath = "//*[@class='js-total']")
     private WebElement getMonthlyFee;
 
+    @FindBy(xpath = "//*[@tab='ANYNET']")
+    private WebElement anynetButton;
+
+    @FindBy(xpath = "//*[@group='ANYNET']")
+    private WebElement sliderAnynet;
+
+
 
 
     /**
@@ -115,5 +122,17 @@ public class LegoTariffPage extends BasePage{
      */
     public String getPriceOfMonthlyFee() {
         return getMonthlyFee.getText();
+    }
+
+    public void clickOnAnynetButton() {
+        ((JavascriptExecutor)webDriver).executeScript("arguments[0].scrollIntoView();", anynetButton);
+        anynetButton.click();
+    }
+
+    public void chooseAnynet(int minAnynet) {
+        int width = sliderAnynet.getSize().getWidth();
+        Actions move = new Actions(webDriver);
+        move.moveToElement(sliderAnynet, ((width*minAnynet)/100), 0).click();
+        move.build().perform();
     }
 }

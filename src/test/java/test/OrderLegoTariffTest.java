@@ -42,7 +42,7 @@ public class OrderLegoTariffTest extends BaseTest {
         1 = ON.
      */
     @DataProvider
-    public Object[][] DataOrderLegoTariff() {
+    public Object[][] DataForOrderLegoTariffWithUnlimOnnet() {
         return new Object[][]{
                 {-50, -25, -25, 0, "20 грн", "43"},
                 {-25, 0, 25, 1, "45 грн", "70"},
@@ -50,6 +50,39 @@ public class OrderLegoTariffTest extends BaseTest {
                 {25, 50, -50, 1, "45 грн", "140"},
                 {50, -50, -25, 0, "20 грн", "103"},
                 {-50, -25, 25, 1, "30 грн", "50"},
+        };
+    }
+
+    /**
+     * Test data for choose Lego bundles and check discount and monthly prices
+     * @return:
+     * Minutes:
+       -50 = 300 min,
+        0 = 500 min,
+        50 = 1000 min,
+     * DATA:
+       -50 = 0 GB,
+       -25 = 1 GB,
+        0 = 4 GB,
+        25 = 8 GB,
+        50 = 10 GB.
+     * SMS:
+       -50 = 0 SMS,
+       -25 = 50 SMS,
+        25 = 100 SMS,
+        50 = 250 SMS.
+     * Social Networks:
+        0 = OFF,
+        1 = ON.
+     */
+    @DataProvider
+    public Object[][] DataForOrderLegoTariffWithAnynet() {
+        return new Object[][]{
+                {-50, -25, -25, 1, "30 грн", "58"},
+                {0, 0, 25, 0, "35 грн", "80"},
+                {50, 25, 50, 1, "60 грн", "165"},
+                {-50, 50, -50, 0, "20 грн", "110"},
+                {0, -50, -25, 1, "0 грн", "93"},
         };
     }
 
@@ -63,8 +96,8 @@ public class OrderLegoTariffTest extends BaseTest {
      * @param priceMonthlyFee - price monthly fee is visible on site
      * @throws InterruptedException
      */
-    @Test(dataProvider = "DataOrderLegoTariff")
-    public void verifyMonthlyFeeWithUnlimOnnet(int minOffnet, int gb, int sms, int onOff, String priceDiscount, String priceMonthlyFee) throws InterruptedException {
+    @Test(dataProvider = "DataForOrderLegoTariffWithUnlimOnnet")
+    public void verifyPriceOfMonthlyFeeWithUnlimOnnet(int minOffnet, int gb, int sms, int onOff, String priceDiscount, String priceMonthlyFee) throws InterruptedException {
         TariffsPlanPage TariffsPlanPage = homePage.clickOnTariffsPlanButton(webDriver);
         Assert.assertEquals(TariffsPlanPage.getCurrentTitle(), "4G LTE мобільний інтернет. lifecell - lifecell Україна",
                 "Tariffs plan page is not loaded");
@@ -73,6 +106,39 @@ public class OrderLegoTariffTest extends BaseTest {
         Assert.assertTrue(legoTariffPage.isPageLoaded(), "Lego Tariff page is not loaded");
 
         legoTariffPage.chooseOffnet(minOffnet);
+        legoTariffPage.chooseData(gb);
+        legoTariffPage.chooseSMS(sms);
+        legoTariffPage.switchSocialNetworks(onOff);
+
+        sleep(2000);
+
+        Assert.assertEquals(legoTariffPage.getPriceOfDiscount(), priceDiscount,
+                "Discount price is incorrect");
+        Assert.assertEquals(legoTariffPage.getPriceOfMonthlyFee(), priceMonthlyFee,
+                "Monthly fee price is incorrect");
+    }
+
+    /**
+     * Method for verify price of discount and monthly fee in Lego tariff
+     * @param minAnynet - minutes to any Networks
+     * @param gb - gigabyte for internet
+     * @param sms - sms
+     * @param onOff - activate / NOT activate
+     * @param priceDiscount - price of discount
+     * @param priceMonthlyFee - price of monthly fee
+     * @throws InterruptedException
+     */
+    @Test(dataProvider = "DataForOrderLegoTariffWithAnynet")
+    public void verifyPriceOfMonthlyFeeWithAnynet(int minAnynet, int gb, int sms, int onOff, String priceDiscount, String priceMonthlyFee) throws InterruptedException {
+        TariffsPlanPage TariffsPlanPage = homePage.clickOnTariffsPlanButton(webDriver);
+        Assert.assertEquals(TariffsPlanPage.getCurrentTitle(), "4G LTE мобільний інтернет. lifecell - lifecell Україна",
+                "Tariffs plan page is not loaded");
+
+        LegoTariffPage legoTariffPage = TariffsPlanPage.clickOnLegoTariff(webDriver);
+        Assert.assertTrue(legoTariffPage.isPageLoaded(), "Lego Tariff page is not loaded");
+
+        legoTariffPage.clickOnAnynetButton();
+        legoTariffPage.chooseAnynet(minAnynet);
         legoTariffPage.chooseData(gb);
         legoTariffPage.chooseSMS(sms);
         legoTariffPage.switchSocialNetworks(onOff);
