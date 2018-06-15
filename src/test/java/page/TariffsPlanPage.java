@@ -13,6 +13,9 @@ public class TariffsPlanPage extends BasePage {
     @FindBy(xpath = "//a[@href='/uk/mobilnij-zvyazok/taryfy/zroby_sam/']")
     private WebElement legoTariffButton;
 
+    @FindBy(xpath = "//*[@class='page-title']")
+    private WebElement pageTitle;
+
     /**
      * Constructor of TariffsPlanPage class
      * @param webDriver - current webDriver object
@@ -26,10 +29,10 @@ public class TariffsPlanPage extends BasePage {
 
     /**
      * Methods for received current title
-     * @return - current tittle
+     * @return - page tittle
      */
-    public String getCurrentTitle() {
-        return webDriver.getTitle();
+    public String getPageTitle() {
+        return pageTitle.getText();
     }
 
     /**

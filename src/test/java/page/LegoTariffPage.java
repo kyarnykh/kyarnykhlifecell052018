@@ -41,8 +41,6 @@ public class LegoTariffPage extends BasePage{
     private WebElement sliderAnynet;
 
 
-
-
     /**
      * Constructor of LegoTariffPage class
      * @param webDriver - current webDriver object

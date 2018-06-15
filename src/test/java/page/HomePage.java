@@ -32,6 +32,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[.='Тарифні плани']")
     private WebElement tariffsPlanButton;
 
+    @FindBy(xpath = "//a[.='Роумінг']")
+    private WebElement roamingButton;
+
 
 
     /**
@@ -93,5 +96,12 @@ public class HomePage extends BasePage {
         waitUntilElementIsClickable(tariffsPlanButton, 5);
         tariffsPlanButton.click();
         return new TariffsPlanPage(webDriver);
+    }
+
+    public RoamingPage clickOnRoamingButton(WebDriver webDriver) {
+        new Actions(webDriver).moveToElement(mainMenu).perform();
+        waitUntilElementIsClickable(roamingButton, 5);
+        roamingButton.click();
+        return new RoamingPage(webDriver);
     }
 }

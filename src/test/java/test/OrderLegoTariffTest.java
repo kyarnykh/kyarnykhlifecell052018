@@ -98,11 +98,11 @@ public class OrderLegoTariffTest extends BaseTest {
      */
     @Test(dataProvider = "DataForOrderLegoTariffWithUnlimOnnet")
     public void verifyPriceOfMonthlyFeeWithUnlimOnnet(int minOffnet, int gb, int sms, int onOff, String priceDiscount, String priceMonthlyFee) throws InterruptedException {
-        TariffsPlanPage TariffsPlanPage = homePage.clickOnTariffsPlanButton(webDriver);
-        Assert.assertEquals(TariffsPlanPage.getCurrentTitle(), "4G LTE мобільний інтернет. lifecell - lifecell Україна",
+        TariffsPlanPage tariffsPlanPage = homePage.clickOnTariffsPlanButton(webDriver);
+        Assert.assertEquals(tariffsPlanPage.getPageTitle(), "ТАРИФНІ ПЛАНИ",
                 "Tariffs plan page is not loaded");
 
-        LegoTariffPage legoTariffPage = TariffsPlanPage.clickOnLegoTariff(webDriver);
+        LegoTariffPage legoTariffPage = tariffsPlanPage.clickOnLegoTariff(webDriver);
         Assert.assertTrue(legoTariffPage.isPageLoaded(), "Lego Tariff page is not loaded");
 
         legoTariffPage.chooseOffnet(minOffnet);
@@ -131,7 +131,7 @@ public class OrderLegoTariffTest extends BaseTest {
     @Test(dataProvider = "DataForOrderLegoTariffWithAnynet")
     public void verifyPriceOfMonthlyFeeWithAnynet(int minAnynet, int gb, int sms, int onOff, String priceDiscount, String priceMonthlyFee) throws InterruptedException {
         TariffsPlanPage TariffsPlanPage = homePage.clickOnTariffsPlanButton(webDriver);
-        Assert.assertEquals(TariffsPlanPage.getCurrentTitle(), "4G LTE мобільний інтернет. lifecell - lifecell Україна",
+        Assert.assertEquals(TariffsPlanPage.getPageTitle(), "ТАРИФНІ ПЛАНИ",
                 "Tariffs plan page is not loaded");
 
         LegoTariffPage legoTariffPage = TariffsPlanPage.clickOnLegoTariff(webDriver);
