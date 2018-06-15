@@ -21,25 +21,25 @@ public class OrderLegoTariffTest extends BaseTest {
      * Test data for choose Lego bundles and check discount and monthly prices
      * @return:
      * Minutes:
-       -50 = 0 min,
-       -25 = 50 min,
-        0 = 100 min,
-        25 = 200 min,
-        50 = 400 min.
+       -50 = 0 min
+       -25 = 50 min
+        0 = 100 min
+        25 = 200 min
+        50 = 400 min
      * DATA:
-       -50 = 0 GB,
-       -25 = 1 GB,
-        0 = 4 GB,
-        25 = 8 GB,
-        50 = 10 GB.
+       -50 = 0 GB
+       -25 = 1 GB
+        0 = 4 GB
+        25 = 8 GB
+        50 = 10 GB
      * SMS:
-       -50 = 0 SMS,
-       -25 = 50 SMS,
-        25 = 100 SMS,
-        50 = 250 SMS.
+       -50 = 0 SMS
+       -25 = 50 SMS
+        25 = 100 SMS
+        50 = 250 SMS
      * Social Networks:
-        0 = OFF,
-        1 = ON.
+        0 = OFF
+        1 = ON
      */
     @DataProvider
     public Object[][] DataForOrderLegoTariffWithUnlimOnnet() {
@@ -57,23 +57,23 @@ public class OrderLegoTariffTest extends BaseTest {
      * Test data for choose Lego bundles and check discount and monthly prices
      * @return:
      * Minutes:
-       -50 = 300 min,
-        0 = 500 min,
-        50 = 1000 min,
+       -50 = 300 min
+        0 = 500 min
+        50 = 1000 min
      * DATA:
-       -50 = 0 GB,
-       -25 = 1 GB,
-        0 = 4 GB,
-        25 = 8 GB,
-        50 = 10 GB.
+       -50 = 0 GB
+       -25 = 1 GB
+        0 = 4 GB
+        25 = 8 GB
+        50 = 10 GB
      * SMS:
-       -50 = 0 SMS,
-       -25 = 50 SMS,
-        25 = 100 SMS,
-        50 = 250 SMS.
+       -50 = 0 SMS
+       -25 = 50 SMS
+        25 = 100 SMS
+        50 = 250 SMS
      * Social Networks:
-        0 = OFF,
-        1 = ON.
+        0 = OFF
+        1 = ON
      */
     @DataProvider
     public Object[][] DataForOrderLegoTariffWithAnynet() {
@@ -92,12 +92,13 @@ public class OrderLegoTariffTest extends BaseTest {
      * @param gb - gigabyte for internet
      * @param sms - sms
      * @param onOff - activate / NOT activate
-     * @param priceDiscount - price discount is visible on site
-     * @param priceMonthlyFee - price monthly fee is visible on site
+     * @param expectedPriceDiscount - price discount is visible on site
+     * @param expectedPriceMonthlyFee - price monthly fee is visible on site
      * @throws InterruptedException
      */
     @Test(dataProvider = "DataForOrderLegoTariffWithUnlimOnnet")
-    public void verifyPriceOfMonthlyFeeWithUnlimOnnet(int minOffnet, int gb, int sms, int onOff, String priceDiscount, String priceMonthlyFee) throws InterruptedException {
+    public void verifyPriceOfMonthlyFeeWithUnlimOnnet(int minOffnet, int gb, int sms, int onOff,
+                                                      String expectedPriceDiscount, String expectedPriceMonthlyFee) throws InterruptedException {
         TariffsPlanPage tariffsPlanPage = homePage.clickOnTariffsPlanButton(webDriver);
         Assert.assertEquals(tariffsPlanPage.getPageTitle(), "ТАРИФНІ ПЛАНИ",
                 "Tariffs plan page is not loaded");
@@ -112,9 +113,9 @@ public class OrderLegoTariffTest extends BaseTest {
 
         sleep(2000);
 
-        Assert.assertEquals(legoTariffPage.getPriceOfDiscount(), priceDiscount,
+        Assert.assertEquals(legoTariffPage.getPriceOfDiscount(), expectedPriceDiscount,
                 "Discount price is incorrect");
-        Assert.assertEquals(legoTariffPage.getPriceOfMonthlyFee(), priceMonthlyFee,
+        Assert.assertEquals(legoTariffPage.getPriceOfMonthlyFee(), expectedPriceMonthlyFee,
                 "Monthly fee price is incorrect");
     }
 
@@ -124,12 +125,13 @@ public class OrderLegoTariffTest extends BaseTest {
      * @param gb - gigabyte for internet
      * @param sms - sms
      * @param onOff - activate / NOT activate
-     * @param priceDiscount - price of discount
-     * @param priceMonthlyFee - price of monthly fee
+     * @param expectedPriceDiscount - price of discount
+     * @param expectedPriceMonthlyFee - price of monthly fee
      * @throws InterruptedException
      */
     @Test(dataProvider = "DataForOrderLegoTariffWithAnynet")
-    public void verifyPriceOfMonthlyFeeWithAnynet(int minAnynet, int gb, int sms, int onOff, String priceDiscount, String priceMonthlyFee) throws InterruptedException {
+    public void verifyPriceOfMonthlyFeeWithAnynet(int minAnynet, int gb, int sms, int onOff,
+                                                  String expectedPriceDiscount, String expectedPriceMonthlyFee) throws InterruptedException {
         TariffsPlanPage TariffsPlanPage = homePage.clickOnTariffsPlanButton(webDriver);
         Assert.assertEquals(TariffsPlanPage.getPageTitle(), "ТАРИФНІ ПЛАНИ",
                 "Tariffs plan page is not loaded");
@@ -145,9 +147,9 @@ public class OrderLegoTariffTest extends BaseTest {
 
         sleep(2000);
 
-        Assert.assertEquals(legoTariffPage.getPriceOfDiscount(), priceDiscount,
+        Assert.assertEquals(legoTariffPage.getPriceOfDiscount(), expectedPriceDiscount,
                 "Discount price is incorrect");
-        Assert.assertEquals(legoTariffPage.getPriceOfMonthlyFee(), priceMonthlyFee,
+        Assert.assertEquals(legoTariffPage.getPriceOfMonthlyFee(), expectedPriceMonthlyFee,
                 "Monthly fee price is incorrect");
     }
 

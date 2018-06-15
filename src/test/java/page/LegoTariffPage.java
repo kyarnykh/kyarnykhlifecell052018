@@ -101,7 +101,7 @@ public class LegoTariffPage extends BasePage{
     public void switchSocialNetworks(int onOff) {
         if (onOff == 1) {
             selectorForSocialNetworks.click();
-        } else {
+        } {
             return;
         }
     }

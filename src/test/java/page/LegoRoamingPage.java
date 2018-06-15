@@ -13,7 +13,7 @@ public class LegoRoamingPage extends BasePage {
     private WebElement fieldCountry;
 
     @FindBy(xpath = "//*[@class='ui-menu-item']")
-    private WebElement dropdownListCountris;
+    private WebElement dropdownListCountries;
 
     @FindBy(xpath = "//*[@group='DAYS']")
     private WebElement sliderDays;
@@ -50,7 +50,7 @@ public class LegoRoamingPage extends BasePage {
     public void insertCountry(String country) {
         ((JavascriptExecutor)webDriver).executeScript("arguments[0].scrollIntoView();", fieldCountry);
         fieldCountry.sendKeys(country);
-        dropdownListCountris.click();
+        dropdownListCountries.click();
     }
 
     public void chooseDays(int days) {
@@ -81,8 +81,7 @@ public class LegoRoamingPage extends BasePage {
         move.build().perform();
     }
 
-    public boolean orderButtonIsClickable() {
-        waitUntilElementIsClickable(orderButton, 5);
+    public boolean checkOrderButton() {
         orderButton.isEnabled();
         return true;
     }

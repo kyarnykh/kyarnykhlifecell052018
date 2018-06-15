@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import page.LegoRoamingPage;
 import page.RoamingPage;
 
+import static java.lang.Thread.sleep;
+
 
 public class OrderLegoRoamingTest extends BaseTest {
 
@@ -13,38 +15,49 @@ public class OrderLegoRoamingTest extends BaseTest {
     }
 
     /**
-     * Test data for choose Lego bundles and check discount and monthly prices
+     * Test data for choose Lego roaming bundles and check their prices
      * @return:
-     * Minutes:
-    -50 = 0 min,
-    -25 = 50 min,
-    0 = 100 min,
-    25 = 200 min,
-    50 = 400 min.
+     * Country - choose country
+     * Days:
+       -40 = 3
+       -20 = 8
+         0 = 11
+        20 = 15
+        40 = 30
      * DATA:
-    -50 = 0 GB,
-    -25 = 1 GB,
-    0 = 4 GB,
-    25 = 8 GB,
-    50 = 10 GB.
+       -50 = 0 MB
+       -30 = 100 MB
+       -10 = 200 MB
+         0 = 300 MB
+        10 = 500 MB
+        30 = 1 GB
+        50 = 2 GB
+     * Minutes:
+       -50 = 0 min
+       -30 = 10 min
+       -10 = 20 min
+        10 = 30 min
+        30 = 50 min
+        50 = 100 min
      * SMS:
-    -50 = 0 SMS,
-    -25 = 50 SMS,
-    25 = 100 SMS,
-    50 = 250 SMS.
-     * Social Networks:
-    0 = OFF,
-    1 = ON.
+       -40 = 0 SMS
+       -20 = 15 SMS
+        20 = 30 SMS
+        40 = 50 SMS
      */
     @DataProvider
     public Object[][] DataForOrderLegoRoaming() {
         return new Object[][]{
-                {"Франція", 0, 0, 0, 0, "380"},
+                {"Франція", -40, 50, -30, 40, "675"},
+                {"Франція", -20, 30, -10, 20, "490"},
+                {"Франція", 0, 10, 10, -20, "405"},
+                {"Франція", 20, 0, 30, -40, "430"},
+                {"Франція", 40, -10, 50, -20, "700"},
         };
     }
 
     @Test(dataProvider = "DataForOrderLegoRoaming")
-    public void verifyPriceOfLegoRoaming(String country, int days, int gb, int minutes, int sms, String priceOfLegoRoaming) {
+    public void verifyPriceOfLegoRoaming(String country, int days, int gb, int minutes, int sms, String expectedPrice) throws InterruptedException {
         RoamingPage roamingPage = homePage.clickOnRoamingButton(webDriver);
         Assert.assertEquals(roamingPage.getPageTitle(), "РОУМІНГ",
                 "Roaming page is not loaded");
@@ -59,8 +72,10 @@ public class OrderLegoRoamingTest extends BaseTest {
         legoRoamingPage.chooseMinutes(minutes);
         legoRoamingPage.chooseSms(sms);
 
-        Assert.assertTrue(legoRoamingPage.orderButtonIsClickable(), "Order button is not clickable");
-        Assert.assertEquals(legoRoamingPage.getPriceOfLegoRoaming(), priceOfLegoRoaming,
+        sleep(2000);
+
+        Assert.assertTrue(legoRoamingPage.checkOrderButton(), "Order button is not clickable");
+        Assert.assertEquals(legoRoamingPage.getPriceOfLegoRoaming(), expectedPrice,
                 "Price by Lego Roaming is incorrect");
     }
 
