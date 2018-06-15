@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+/**
+ * PageObject of TariffsPlanPage with methods and variables
+ */
 public class TariffsPlanPage extends BasePage {
 
     @FindBy(xpath = "//a[@href='/uk/mobilnij-zvyazok/taryfy/zroby_sam/']")
@@ -13,6 +16,7 @@ public class TariffsPlanPage extends BasePage {
     /**
      * Constructor of TariffsPlanPage class
      * @param webDriver - current webDriver object
+     * PageFactory - initialisation WebElements on THIS page and write their location of page in RAM
      */
     public TariffsPlanPage(WebDriver webDriver) {
         super(webDriver);
@@ -20,10 +24,19 @@ public class TariffsPlanPage extends BasePage {
     }
 
 
+    /**
+     * Methods for received current title
+     * @return - current tittle
+     */
     public String getCurrentTitle() {
         return webDriver.getTitle();
     }
 
+    /**
+     * Methods for click on Lego tariff button
+     * @param webDriver - current webDriver
+     * @return - new next Page
+     */
     public LegoTariffPage clickOnLegoTariff(WebDriver webDriver) {
         legoTariffButton.click();
         return new LegoTariffPage(webDriver);

@@ -9,6 +9,9 @@ import page.TariffsPlanPage;
 import static java.lang.Thread.sleep;
 
 
+/**
+ * TestPage of OrderLegoTariffTest with methods, variables and test data
+ */
 public class OrderLegoTariffTest extends BaseTest {
 
     public OrderLegoTariffTest() {
@@ -51,8 +54,14 @@ public class OrderLegoTariffTest extends BaseTest {
     }
 
     /**
-     * Method for verify basic order device
-     * @param
+     * Method for verify price of discount and monthly fee in Lego tariff
+     * @param minOffnet - minutes to other Networks
+     * @param gb - gigabyte for internet
+     * @param sms - sms
+     * @param onOff - activate / NOT activate
+     * @param priceDiscount - price discount is visible on site
+     * @param priceMonthlyFee - price monthly fee is visible on site
+     * @throws InterruptedException
      */
     @Test(dataProvider = "DataOrderLegoTariff")
     public void verifyMonthlyFeeWithUnlimOnnet(int minOffnet, int gb, int sms, int onOff, String priceDiscount, String priceMonthlyFee) throws InterruptedException {
@@ -70,9 +79,9 @@ public class OrderLegoTariffTest extends BaseTest {
 
         sleep(2000);
 
-        Assert.assertEquals(legoTariffPage.matchDiscountPrice(), priceDiscount,
+        Assert.assertEquals(legoTariffPage.getPriceOfDiscount(), priceDiscount,
                 "Discount price is incorrect");
-        Assert.assertEquals(legoTariffPage.matchMonthlyFeePrice(), priceMonthlyFee,
+        Assert.assertEquals(legoTariffPage.getPriceOfMonthlyFee(), priceMonthlyFee,
                 "Monthly fee price is incorrect");
     }
 

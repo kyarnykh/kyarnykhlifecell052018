@@ -74,7 +74,7 @@ public class HomePage extends BasePage {
     }
 
     /**
-     * Click on the shop buttone
+     * Click on the shop button
      * @param webDriver - current webDriver
      * @return next new Page
      */
@@ -83,6 +83,11 @@ public class HomePage extends BasePage {
         return new ShopPage(webDriver);
     }
 
+    /**
+     * Navigate and click on tariffs button
+     * @param webDriver - current webDriver
+     * @return new next Page
+     */
     public TariffsPlanPage clickOnTariffsPlanButton(WebDriver webDriver) {
         new Actions(webDriver).moveToElement(mainMenu).perform();
         waitUntilElementIsClickable(tariffsPlanButton, 5);

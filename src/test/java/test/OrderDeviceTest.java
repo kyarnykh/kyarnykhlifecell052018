@@ -17,7 +17,7 @@ public class OrderDeviceTest extends BaseTest {
 
     /**
      * Test data for order device
-     * @return information about users
+     * @return information from user
      */
     @DataProvider
     public Object[][] DataOrderDevice() {
