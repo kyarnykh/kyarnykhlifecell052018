@@ -124,11 +124,18 @@ public class LegoTariffPage extends BasePage{
         return getMonthlyFee.getText();
     }
 
+    /**
+     * Method for scroll and click on Anynet tab
+     */
     public void clickOnAnynetButton() {
         ((JavascriptExecutor)webDriver).executeScript("arguments[0].scrollIntoView();", anynetButton);
         anynetButton.click();
     }
 
+    /**
+     * Method for choose amount minutes
+     * @param minAnynet - minutes to any networks
+     */
     public void chooseAnynet(int minAnynet) {
         int width = sliderAnynet.getSize().getWidth();
         Actions move = new Actions(webDriver);

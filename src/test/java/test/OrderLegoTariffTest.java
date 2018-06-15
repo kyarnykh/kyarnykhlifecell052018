@@ -151,8 +151,4 @@ public class OrderLegoTariffTest extends BaseTest {
                 "Monthly fee price is incorrect");
     }
 
-
-
-
-
 }
