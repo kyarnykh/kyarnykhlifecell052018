@@ -90,7 +90,7 @@ public class LegoRoamingPage extends BasePage {
     }
 
     public String getPriceOfLegoRoaming() throws InterruptedException {
-        sleep (1000);
+        sleep (10000);
         return getPrice.getText();
     }
 

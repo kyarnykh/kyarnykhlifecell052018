@@ -113,7 +113,7 @@ public class LegoTariffPage extends BasePage{
      * @return - amount of discount
      */
     public String getPriceOfDiscount() throws InterruptedException {
-        sleep(1000);
+        sleep(10000);
         return getDiscountPrice.getText();
     }
 
