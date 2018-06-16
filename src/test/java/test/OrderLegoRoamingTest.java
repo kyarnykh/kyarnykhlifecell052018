@@ -6,8 +6,6 @@ import org.testng.annotations.Test;
 import page.LegoRoamingPage;
 import page.RoamingPage;
 
-import static java.lang.Thread.sleep;
-
 
 public class OrderLegoRoamingTest extends BaseTest {
 
@@ -72,9 +70,8 @@ public class OrderLegoRoamingTest extends BaseTest {
         legoRoamingPage.chooseMinutes(minutes);
         legoRoamingPage.chooseSms(sms);
 
-        sleep(2000);
-
         Assert.assertTrue(legoRoamingPage.checkOrderButton(), "Order button is not clickable");
+
         Assert.assertEquals(legoRoamingPage.getPriceOfLegoRoaming(), expectedPrice,
                 "Price by Lego Roaming is incorrect");
     }

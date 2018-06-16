@@ -31,7 +31,7 @@ public class CustomerServiceCentersTest extends BaseTest {
      * @param selectCity - City number in dropdown list
      * @param matchRegionAndCity - text for checking selected Region and City with expected
      */
-    @Test (dataProvider = "RegionCity")
+//    @Test (dataProvider = "RegionCity")
     public void verifyRegionAndCityForm(int selectRegion, int selectCity, String matchRegionAndCity) {
         CustomerServiceCentersPage customerServiceCentersPage = homePage.clickCustomerServiceCentersButton();
         Assert.assertEquals(customerServiceCentersPage.getCurrentTittle(), "Магазини lifecell",

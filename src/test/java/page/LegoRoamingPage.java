@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static java.lang.Thread.sleep;
 
 public class LegoRoamingPage extends BasePage {
 
@@ -86,7 +89,8 @@ public class LegoRoamingPage extends BasePage {
         return true;
     }
 
-    public String getPriceOfLegoRoaming() {
+    public String getPriceOfLegoRoaming() throws InterruptedException {
+        sleep (1000);
         return getPrice.getText();
     }
 

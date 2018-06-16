@@ -7,6 +7,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static java.lang.Thread.sleep;
+
 
 /**
  * PageObject of LegoTariffPage with methods and variables
@@ -110,7 +112,8 @@ public class LegoTariffPage extends BasePage{
      * Method for get price of discount
      * @return - amount of discount
      */
-    public String getPriceOfDiscount() {
+    public String getPriceOfDiscount() throws InterruptedException {
+        sleep(1000);
         return getDiscountPrice.getText();
     }
 
