@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import page.LegoTariffPage;
 import page.TariffsPlanPage;
 
+import static java.lang.Thread.sleep;
+
 
 /**
  * TestPage of OrderLegoTariffTest with methods, variables and test data
@@ -109,6 +111,8 @@ public class OrderLegoTariffTest extends BaseTest {
         legoTariffPage.chooseSMS(sms);
         legoTariffPage.switchSocialNetworks(onOff);
 
+        sleep(5000);
+
         Assert.assertEquals(legoTariffPage.getPriceOfDiscount(), expectedPriceDiscount,
                 "Discount price is incorrect");
         Assert.assertEquals(legoTariffPage.getPriceOfMonthlyFee(), expectedPriceMonthlyFee,
@@ -140,6 +144,8 @@ public class OrderLegoTariffTest extends BaseTest {
         legoTariffPage.chooseData(gb);
         legoTariffPage.chooseSMS(sms);
         legoTariffPage.switchSocialNetworks(onOff);
+
+        sleep(5000);
 
         Assert.assertEquals(legoTariffPage.getPriceOfDiscount(), expectedPriceDiscount,
                 "Discount price is incorrect");
