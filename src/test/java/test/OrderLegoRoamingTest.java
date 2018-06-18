@@ -67,7 +67,6 @@ public class OrderLegoRoamingTest extends BaseTest {
                 "Roaming page is not loaded");
 
         legoRoamingPage.insertCountry(country);
-        sleep(1000);
         legoRoamingPage.chooseDays(days);
         sleep(1000);
         legoRoamingPage.chooseData(gb);
