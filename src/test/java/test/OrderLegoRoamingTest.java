@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import page.LegoRoamingPage;
 import page.RoamingPage;
 
+import static java.lang.Thread.sleep;
+
 
 public class OrderLegoRoamingTest extends BaseTest {
 
@@ -55,7 +57,7 @@ public class OrderLegoRoamingTest extends BaseTest {
     }
 
     @Test(dataProvider = "DataForOrderLegoRoaming")
-    public void verifyPriceOfLegoRoaming(String country, int days, int gb, int minutes, int sms, String expectedPrice) {
+    public void verifyPriceOfLegoRoaming(String country, int days, int gb, int minutes, int sms, String expectedPrice) throws InterruptedException {
         RoamingPage roamingPage = homePage.clickOnRoamingButton(webDriver);
         Assert.assertEquals(roamingPage.getPageTitle(), "РОУМІНГ",
                 "Roaming page is not loaded");
@@ -65,10 +67,15 @@ public class OrderLegoRoamingTest extends BaseTest {
                 "Roaming page is not loaded");
 
         legoRoamingPage.insertCountry(country);
+        sleep(1000);
         legoRoamingPage.chooseDays(days);
+        sleep(1000);
         legoRoamingPage.chooseData(gb);
+        sleep(1000);
         legoRoamingPage.chooseMinutes(minutes);
+        sleep(1000);
         legoRoamingPage.chooseSms(sms);
+        sleep(1000);
 
         Assert.assertTrue(legoRoamingPage.checkOrderButton(), "Order button is not clickable");
 

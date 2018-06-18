@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import page.LegoTariffPage;
 import page.TariffsPlanPage;
 
+import static java.lang.Thread.sleep;
+
 
 /**
  * TestPage of OrderLegoTariffTest with methods, variables and test data
@@ -96,7 +98,7 @@ public class OrderLegoTariffTest extends BaseTest {
      */
     @Test(dataProvider = "DataForOrderLegoTariffWithUnlimOnnet")
     public void verifyPriceOfMonthlyFeeWithUnlimOnnet(int minOffnet, int gb, int sms, int onOff,
-                                                      String expectedPriceDiscount, String expectedPriceMonthlyFee) {
+                                                      String expectedPriceDiscount, String expectedPriceMonthlyFee) throws InterruptedException {
         TariffsPlanPage tariffsPlanPage = homePage.clickOnTariffsPlanButton(webDriver);
         Assert.assertEquals(tariffsPlanPage.getPageTitle(), "ТАРИФНІ ПЛАНИ",
                 "Tariffs plan page is not loaded");
@@ -105,9 +107,13 @@ public class OrderLegoTariffTest extends BaseTest {
         Assert.assertTrue(legoTariffPage.isPageLoaded(), "Lego Tariff page is not loaded");
 
         legoTariffPage.chooseOffnet(minOffnet);
+        sleep(1000);
         legoTariffPage.chooseData(gb);
+        sleep(1000);
         legoTariffPage.chooseSMS(sms);
+        sleep(1000);
         legoTariffPage.switchSocialNetworks(onOff);
+        sleep(1000);
 
         Assert.assertEquals(legoTariffPage.getPriceOfDiscount(), expectedPriceDiscount,
                 "Discount price is incorrect");
@@ -127,7 +133,7 @@ public class OrderLegoTariffTest extends BaseTest {
      */
     @Test(dataProvider = "DataForOrderLegoTariffWithAnynet")
     public void verifyPriceOfMonthlyFeeWithAnynet(int minAnynet, int gb, int sms, int onOff,
-                                                  String expectedPriceDiscount, String expectedPriceMonthlyFee) {
+                                                  String expectedPriceDiscount, String expectedPriceMonthlyFee) throws InterruptedException {
         TariffsPlanPage TariffsPlanPage = homePage.clickOnTariffsPlanButton(webDriver);
         Assert.assertEquals(TariffsPlanPage.getPageTitle(), "ТАРИФНІ ПЛАНИ",
                 "Tariffs plan page is not loaded");
@@ -137,9 +143,13 @@ public class OrderLegoTariffTest extends BaseTest {
 
         legoTariffPage.clickOnAnynetButton();
         legoTariffPage.chooseAnynet(minAnynet);
+        sleep(1000);
         legoTariffPage.chooseData(gb);
+        sleep(1000);
         legoTariffPage.chooseSMS(sms);
+        sleep(1000);
         legoTariffPage.switchSocialNetworks(onOff);
+        sleep(1000);
 
         Assert.assertEquals(legoTariffPage.getPriceOfDiscount(), expectedPriceDiscount,
                 "Discount price is incorrect");
