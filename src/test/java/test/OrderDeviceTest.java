@@ -39,7 +39,7 @@ public class OrderDeviceTest extends BaseTest {
      * @param numberApartment - number apartment
      * @param userComment - comments by user
      */
-//    @Test(dataProvider = "DataOrderDevice")
+    @Test(dataProvider = "DataOrderDevice")
     public void basicOrderDeviceTest(String userMobileNumber, String userName, String userEmail, String userRegion, String userCity,
                                      String nameOfStreet, String numberHouse, String numberApartment, String userComment) {
         ShopPage shopPage = homePage.clickOnShopButton(webDriver);
