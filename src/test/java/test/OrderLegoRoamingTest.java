@@ -5,6 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page.LegoRoamingPage;
 import page.RoamingPage;
+import util.RetryAnalyzer;
 
 import static java.lang.Thread.sleep;
 
@@ -56,7 +57,7 @@ public class OrderLegoRoamingTest extends BaseTest {
         };
     }
 
-    @Test(dataProvider = "DataForOrderLegoRoaming")
+    @Test(dataProvider = "DataForOrderLegoRoaming", retryAnalyzer = RetryAnalyzer.class)
     public void verifyPriceOfLegoRoaming(String country, int days, int gb, int minutes, int sms, String expectedPrice) throws InterruptedException {
         RoamingPage roamingPage = homePage.clickOnRoamingButton(webDriver);
         Assert.assertEquals(roamingPage.getPageTitle(), "РОУМІНГ",
