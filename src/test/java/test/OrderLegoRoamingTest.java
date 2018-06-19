@@ -5,11 +5,13 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page.LegoRoamingPage;
 import page.RoamingPage;
-import util.RetryAnalyzer;
 
 import static java.lang.Thread.sleep;
 
 
+/**
+ * TestPage of OrderLegoRoamingTest with methods, variables and test data
+ */
 public class OrderLegoRoamingTest extends BaseTest {
 
     public OrderLegoRoamingTest() {
@@ -49,15 +51,25 @@ public class OrderLegoRoamingTest extends BaseTest {
     @DataProvider
     public Object[][] DataForOrderLegoRoaming() {
         return new Object[][]{
-                {"Франція", -40, 50, -30, 40, "6750"},
-                {"Франція", -20, 30, -10, 20, "4900"},
-                {"Франція", 0, 10, 10, -20, "4050"},
-//                {"Франція", 20, 0, 30, -40, "430"},
-//                {"Франція", 40, -10, 50, -20, "700"},
+                {"Франція", -40, 50, -30, 40, "675"},
+                {"Франція", -20, 30, -10, 20, "490"},
+                {"Франція", 0, 10, 10, -20, "405"},
+                {"Франція", 20, 0, 30, -40, "430"},
+                {"Франція", 40, -10, 50, -20, "700"},
         };
     }
 
-    @Test(dataProvider = "DataForOrderLegoRoaming", retryAnalyzer = RetryAnalyzer.class)
+    /**
+     * Method for verify price for Lego Roaming
+     * @param country - country of stay
+     * @param days - quantity days
+     * @param gb - gigabyte for internet
+     * @param minutes - minutes for outgoing and incoming calls
+     * @param sms - sms
+     * @param expectedPrice - price is visible on site
+     * @throws InterruptedException
+     */
+    @Test(dataProvider = "DataForOrderLegoRoaming")
     public void verifyPriceOfLegoRoaming(String country, int days, int gb, int minutes, int sms, String expectedPrice) throws InterruptedException {
         RoamingPage roamingPage = homePage.clickOnRoamingButton(webDriver);
         Assert.assertEquals(roamingPage.getPageTitle(), "РОУМІНГ",
@@ -79,7 +91,7 @@ public class OrderLegoRoamingTest extends BaseTest {
 
         Assert.assertTrue(legoRoamingPage.checkOrderButton(), "Order button is not clickable");
 
-        Assert.assertEquals(legoRoamingPage.getPriceOfLegoRoaming(), expectedPrice,
+        Assert.assertEquals(legoRoamingPage.getActualPrice(), expectedPrice,
                 "Price by Lego Roaming is incorrect");
     }
 

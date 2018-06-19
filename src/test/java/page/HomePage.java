@@ -98,6 +98,11 @@ public class HomePage extends BasePage {
         return new TariffsPlanPage(webDriver);
     }
 
+    /**
+     * Navigate and click on roaming button
+     * @param webDriver - current webDriver
+     * @return - new next Page
+     */
     public RoamingPage clickOnRoamingButton(WebDriver webDriver) {
         new Actions(webDriver).moveToElement(mainMenu).perform();
         waitUntilElementIsClickable(roamingButton, 5);

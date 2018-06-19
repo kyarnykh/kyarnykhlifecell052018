@@ -61,7 +61,7 @@ public class LegoTariffPage extends BasePage{
     }
 
     /**
-     * Method for choose amount minutes
+     * Method for scroll and choose amount minutes
      * @param minOffnet - minutes to other networks
      */
     public void chooseOffnet(int minOffnet) {
