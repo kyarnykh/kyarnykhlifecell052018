@@ -97,7 +97,7 @@ public class OrderLegoTariffTest extends BaseTest {
      * @param expectedPriceMonthlyFee - price monthly fee is visible on site
      * @throws InterruptedException
      */
-    @Test(dataProvider = "DataForOrderLegoTariffWithUnlimOnnet", retryAnalyzer = RetryAnalyzer.class)
+//    @Test(dataProvider = "DataForOrderLegoTariffWithUnlimOnnet", retryAnalyzer = RetryAnalyzer.class)
     public void verifyPriceOfMonthlyFeeWithUnlimOnnet(int minOffnet, int gb, int sms, int onOff,
                                                       String expectedPriceDiscount, String expectedPriceMonthlyFee) throws InterruptedException {
         TariffsPlanPage tariffsPlanPage = homePage.clickOnTariffsPlanButton(webDriver);
@@ -132,7 +132,7 @@ public class OrderLegoTariffTest extends BaseTest {
      * @param expectedPriceMonthlyFee - price of monthly fee
      * @throws InterruptedException
      */
-    @Test(dataProvider = "DataForOrderLegoTariffWithAnynet", retryAnalyzer = RetryAnalyzer.class)
+//    @Test(dataProvider = "DataForOrderLegoTariffWithAnynet", retryAnalyzer = RetryAnalyzer.class)
     public void verifyPriceOfMonthlyFeeWithAnynet(int minAnynet, int gb, int sms, int onOff,
                                                   String expectedPriceDiscount, String expectedPriceMonthlyFee) throws InterruptedException {
         TariffsPlanPage TariffsPlanPage = homePage.clickOnTariffsPlanButton(webDriver);
