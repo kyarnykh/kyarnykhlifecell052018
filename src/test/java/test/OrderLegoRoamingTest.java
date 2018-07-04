@@ -6,8 +6,6 @@ import org.testng.annotations.Test;
 import page.LegoRoamingPage;
 import page.RoamingPage;
 
-import static java.lang.Thread.sleep;
-
 
 /**
  * TestPage of OrderLegoRoamingTest with methods, variables and test data
@@ -81,19 +79,18 @@ public class OrderLegoRoamingTest extends BaseTest {
 
         legoRoamingPage.insertCountry(country);
         legoRoamingPage.chooseDays(days);
-        WebDriverSleep(5000);
+        WebDriverSleep(1000);
         legoRoamingPage.chooseData(gb);
-        WebDriverSleep(5000);
+        WebDriverSleep(1000);
         legoRoamingPage.chooseMinutes(minutes);
-        WebDriverSleep(5000);
+        WebDriverSleep(1000);
         legoRoamingPage.chooseSms(sms);
-        WebDriverSleep(5000);
+        WebDriverSleep(1000);
 
         Assert.assertTrue(legoRoamingPage.checkOrderButton(), "Order button is not clickable");
 
         Assert.assertEquals(legoRoamingPage.getActualPrice(), expectedPrice,
                 "Price by Lego Roaming is incorrect");
     }
-
 
 }
