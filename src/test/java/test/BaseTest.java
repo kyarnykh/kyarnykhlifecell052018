@@ -9,6 +9,8 @@ import page.HomePage;
 
 import java.util.concurrent.TimeUnit;
 
+import static java.lang.Thread.sleep;
+
 /**
  * TestPage of BaseTest with main methods
  */
@@ -43,6 +45,11 @@ public abstract class BaseTest {
     @AfterMethod
     public void after() {
         webDriver.close();
+    }
+
+    public void WebDriverSleep (int timeOutInMilliS) throws InterruptedException {
+        System.out.println("WebDriver starts to sleep for "+timeOutInMilliS+" SEC");
+        sleep (timeOutInMilliS);
     }
 
 }

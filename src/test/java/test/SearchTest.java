@@ -28,7 +28,7 @@ public class SearchTest extends BaseTest {
      * Method for verify basic search form
      * @param searchTerm - search term
      */
-    @Test(dataProvider = "DataSearch")
+//    @Test(dataProvider = "DataSearch")
     public void basicSearchTest(String searchTerm) {
         SearchPage searchPage = homePage.search(searchTerm);
         Assert.assertTrue(searchPage.isPageLoaded(), "Search page is not loaded");

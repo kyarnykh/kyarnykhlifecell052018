@@ -81,13 +81,13 @@ public class OrderLegoRoamingTest extends BaseTest {
 
         legoRoamingPage.insertCountry(country);
         legoRoamingPage.chooseDays(days);
-        sleep(1000);
+        WebDriverSleep(5000);
         legoRoamingPage.chooseData(gb);
-        sleep(1000);
+        WebDriverSleep(5000);
         legoRoamingPage.chooseMinutes(minutes);
-        sleep(1000);
+        WebDriverSleep(5000);
         legoRoamingPage.chooseSms(sms);
-        sleep(1000);
+        WebDriverSleep(5000);
 
         Assert.assertTrue(legoRoamingPage.checkOrderButton(), "Order button is not clickable");
 
