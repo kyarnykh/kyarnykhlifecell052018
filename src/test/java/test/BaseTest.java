@@ -47,9 +47,9 @@ public abstract class BaseTest {
         webDriver.close();
     }
 
-    public void WebDriverSleep (int timeOutInMilliS) throws InterruptedException {
-        System.out.println("WebDriver starts to sleep for "+timeOutInMilliS+" SEC");
-        sleep (timeOutInMilliS);
+    public void WebDriverSleep (int timeOutInMillis) throws InterruptedException {
+        System.out.println("WebDriver starts to sleep for "+timeOutInMillis+" millis");
+        sleep (timeOutInMillis);
     }
 
 }
