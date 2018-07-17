@@ -1,15 +1,18 @@
 package test;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import page.HomePage;
 
 import java.util.concurrent.TimeUnit;
 
-import static java.lang.Thread.sleep;
 
 /**
  * TestPage of BaseTest with main methods
@@ -27,11 +30,19 @@ public abstract class BaseTest {
      * Open web site
      * Initialisation page
      */
+    @Parameters("browser")
     @BeforeMethod
-    public void before() {
-        webDriver = new FirefoxDriver();
+    public void before(@Optional("firefox") String browser) {
+        if(browser.equals("firefox")) {
+            webDriver = new FirefoxDriver();
+        }
+        else if(browser.equals("chrome")) {
+            webDriver = new ChromeDriver();
+        }
+
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         webDriver.manage().window().maximize();
+
         webDriver.get("https://www.lifecell.ua");
         homePage = new HomePage(webDriver);
         Assert.assertEquals(homePage.getCurrentTittle(), "Мобільний зв'язок lifecell - lifecell Україна",
@@ -44,12 +55,16 @@ public abstract class BaseTest {
      */
     @AfterMethod
     public void after() {
+        if(webDriver != null)
         webDriver.close();
     }
 
-    public void WebDriverSleep (int timeOutInMillis) throws InterruptedException {
-        System.out.println("WebDriver starts to sleep for "+timeOutInMillis+" millis");
-        sleep (timeOutInMillis);
+    /**
+     * Method waiting for each JQuery scripts when will be ended
+     */
+    public void waitForJQueryEnds() {
+        while ((Boolean) ((JavascriptExecutor) webDriver).executeScript("return jQuery.active!=0")) {
+        }
     }
 
 }

@@ -115,8 +115,7 @@ public class LegoRoamingPage extends BasePage {
      * @return - true
      */
     public boolean checkOrderButton() {
-        orderButton.isEnabled();
-        return true;
+        return orderButton.isEnabled();
     }
 
     /**

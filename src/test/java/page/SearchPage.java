@@ -128,5 +128,4 @@ public class SearchPage extends BasePage{
         return menuVacancy.getText();
     }
 
-
 }

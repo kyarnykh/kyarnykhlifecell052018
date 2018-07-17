@@ -49,7 +49,7 @@ public class OrderLegoRoamingTest extends BaseTest {
     @DataProvider
     public Object[][] DataForOrderLegoRoaming() {
         return new Object[][]{
-                {"Франція", -40, 50, -30, 40, "675"},
+                {"Франція", 40, 50, -30, 40, "675"},
                 {"Франція", -20, 30, -10, 20, "490"},
                 {"Франція", 0, 10, 10, -20, "405"},
                 {"Франція", 20, 0, 30, -40, "430"},
@@ -68,7 +68,7 @@ public class OrderLegoRoamingTest extends BaseTest {
      * @throws InterruptedException
      */
     @Test(dataProvider = "DataForOrderLegoRoaming")
-    public void verifyPriceOfLegoRoaming(String country, int days, int gb, int minutes, int sms, String expectedPrice) throws InterruptedException {
+    public void verifyPriceOfLegoRoaming(String country, int days, int gb, int minutes, int sms, String expectedPrice) {
         RoamingPage roamingPage = homePage.clickOnRoamingButton(webDriver);
         Assert.assertEquals(roamingPage.getPageTitle(), "РОУМІНГ",
                 "Roaming page is not loaded");
@@ -79,13 +79,11 @@ public class OrderLegoRoamingTest extends BaseTest {
 
         legoRoamingPage.insertCountry(country);
         legoRoamingPage.chooseDays(days);
-        WebDriverSleep(1000);
         legoRoamingPage.chooseData(gb);
-        WebDriverSleep(1000);
         legoRoamingPage.chooseMinutes(minutes);
-        WebDriverSleep(1000);
         legoRoamingPage.chooseSms(sms);
-        WebDriverSleep(1000);
+
+        waitForJQueryEnds();
 
         Assert.assertTrue(legoRoamingPage.checkOrderButton(), "Order button is not clickable");
 

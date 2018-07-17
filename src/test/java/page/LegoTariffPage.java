@@ -56,8 +56,7 @@ public class LegoTariffPage extends BasePage{
      * @return - true
      */
     public boolean isPageLoaded() {
-        orderLegoTariffButton.isDisplayed();
-        return true;
+        return orderLegoTariffButton.isDisplayed();
     }
 
     /**
